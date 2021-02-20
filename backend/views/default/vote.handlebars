@@ -1,0 +1,21 @@
+<div class="jumbotron">
+  <form action="/" method="POST"> 
+  <div class="form-outline mb-4">
+    <label class="form-label" for="name">Name</label>
+    <input type="text" id="name" name="name" class="form-control" />
+  </div>
+  
+    <select class="form-select" name="voting_choice">
+        <option value="true">True</option>
+        <option value="false">False</option>
+    </select>
+    <br><br>
+
+    <div class="form-outline mb-4">
+      <label class="form-label" for="casted_at">Date</label><br>
+      <input type="date" name="casted_at" date-format="dd/mm/yyyy" placeholder="select date" >
+    </div>
+    <br><br>
+  <button type="submit" class="btn btn-primary btn-block">Sign in</button>
+</form>
+</div>
