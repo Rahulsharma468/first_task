@@ -4,8 +4,11 @@ const hbs = require('express-handlebars');
 const path = require('path');
 const { MONGODBURL , PORT } = require('./config/config');
 const Poll = require('./model/postModel').Poll;
+const cors = require('cors');
 //initializing app
 const app = express();
+
+app.use(cors());
 
 function isValidDate(date){
     regex = /^\d\d\d\d-(0[1-9]|1[0-2])-(0[1-9]|[1-2]\d|3[0-1])$/;
@@ -60,7 +63,7 @@ app.post('/vote' , (req,res) => {
             })
         }
     }else{
-        res.json({error: 'Bad name'});
+        res.send("error")
     }
     
 })
@@ -68,7 +71,7 @@ app.get('/data' , (req,res) => {
     Poll.find()
         .lean()
         .then(data=>{
-            res.send(JSON.stringify(data));
+            res.send(data);
         })
 })
 

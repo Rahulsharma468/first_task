@@ -1,10 +1,10 @@
-import { useState } from "react";
+import React ,{useState} from "react";
 import './App.css';
 import Axios from 'axios';
 
 function App() {
   const [name, setName] = useState("");
-  const [voting_choice , setVotingChoice] = useState(true);
+  const [voting_choice , setVotingChoice] = useState('true');
   const [casted_at , setCastedAt] = useState("");
   const [polls , setPolls] = useState([]);
 
@@ -14,14 +14,11 @@ function App() {
       voting_choice: voting_choice,
       casted_at: casted_at
     }).then(() => {
-      setPolls([
-        ...polls,
-        {
+      setPolls([ ...polls,{
           name: name,
           voting_choice: voting_choice,
           casted_at: casted_at
-        },
-      ]);
+        },]);
     });
   };
 
@@ -41,14 +38,10 @@ function App() {
           onChange={(event) => {
             setName(event.target.value);
           }}
+          required
+          
         />
         <label>Voting Choice</label>
-        {/* <input
-          type="number"
-          onChange={(event) => {
-            setAge(event.target.value);
-          }}
-        /> */}
         <select name="voting_choice" onChange={(event) => {
             setVotingChoice(event.target.value);
           }}>
@@ -63,27 +56,12 @@ function App() {
             setCastedAt(event.target.value);
           }}
         />
-        {/* <label>Position:</label>
-        <input
-          type="text"
-          onChange={(event) => {
-            setPosition(event.target.value);
-          }}
-        />
-        <label>Wage (year):</label>
-        <input
-          type="number"
-          onChange={(event) => {
-            setWage(event.target.value);
-          }}
-        /> */}
         <button onClick={addVote}>Vote</button>
       </div>
 
       
       <div className="employees">
-        <button onClick={getPOlls}>Show POlls</button>
-
+        <button onClick={getPOlls}>Show Polls</button>
         {polls.map((val, key) => {
           return (
             <div className="employee">
